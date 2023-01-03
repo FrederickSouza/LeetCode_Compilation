@@ -7,6 +7,7 @@ class Solution {
 			}
 		} System.out.println("nenhum encontrado");
         //Teste nova interface leetcode
+        //Olá mundo!11!1
 		return new int[] {0, 0};
 	}
 }
