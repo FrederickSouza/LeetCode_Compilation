@@ -6,8 +6,7 @@ class Solution {
 					return new int[] {i,j};
 			}
 		} System.out.println("nenhum encontrado");
-        //Teste nova interface leetcode
-        //Olá mundo!11!1
+
 		return new int[] {0, 0};
 	}
 }
