@@ -8,9 +8,9 @@ class Solution {
 			digits[i] = 0;
 		}
 		
-		int[] digitsZero = new int[digits.length +1];
-		digitsZero[0] = 1;
+		digits = new int[digits.length +1];
+		digits[0] = 1;
 		
-		return digitsZero;
+		return digits;
     }
 }
