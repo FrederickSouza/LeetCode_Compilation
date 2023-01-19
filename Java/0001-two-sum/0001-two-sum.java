@@ -5,8 +5,8 @@ class Solution {
 				if (nums[i] + nums[j] == target)
 					return new int[] {i,j};
 			}
-		} System.out.println("nenhum encontrado");
-
+		}
+        
 		return new int[] {0, 0};
 	}
 }
