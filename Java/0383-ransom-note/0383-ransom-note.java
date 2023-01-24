@@ -20,11 +20,11 @@ class Solution {
 			if(map.get(letra) != null && map.get(letra) > 0) {
 				map.put(letra, map.get(letra) -1);
 			}
-			
-			Set<Integer> ans = new HashSet(map.values());
-			if(ans.size() == 1 && ans.contains(0)) {
-				return true;
-			}
+		}
+
+		Set<Integer> ans = new HashSet(map.values());
+		if(ans.size() == 1 && ans.contains(0)) {
+			return true;
 		}
 		
 		return false;
