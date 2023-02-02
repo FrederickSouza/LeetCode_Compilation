@@ -15,41 +15,29 @@
  */
 class Solution {
     public boolean isSymmetric(TreeNode root) {
-        Queue<TreeNode> listaEsq = new LinkedList();
-		Queue<TreeNode> listaDir = new LinkedList();
-		
-		listaEsq.add(root.left);
-		listaDir.add(root.right);
-		
-		while(!listaEsq.isEmpty() && !listaDir.isEmpty()) {
-			int sizeA = listaEsq.size();
-			int sizeB = listaDir.size();
-			
-			if(sizeA != sizeB) {
-				return false;
-			}
-			
-			for(int i=0; i<sizeA; i++) {
-				TreeNode nodeEsq = listaEsq.poll();
-				TreeNode nodeDir = listaDir.poll();
-				
-				if(nodeEsq == null && nodeDir == null) {
-					continue;
-				} else if (nodeEsq == null || nodeDir == null) {
-					return false;
-				} else if (nodeEsq.val != nodeDir.val) {
-					return false;
-				}
-				
-				listaEsq.add(nodeEsq.left);
-				listaEsq.add(nodeEsq.right);
-				
-				listaDir.add(nodeDir.right);
-				listaDir.add(nodeDir.left);
-				
-			}
-			
+		boolean ans = traverse(root,root);
+		return ans;
+	}
+	
+	public static boolean traverse(TreeNode nodeA, TreeNode nodeB) {
+		if(nodeA == null && nodeB == null) {
+			return true;
+		} else if (nodeA == null || nodeB == null) {
+			return false;
+		} else if (nodeA.val != nodeB.val) {
+			return false;
 		}
-		return true;
+		
+		boolean left = traverse(nodeA.left, nodeB.right);
+		if(!left) {
+			return false;
+		}
+		
+		boolean right = traverse(nodeA.right, nodeB.left); 
+		if(!right) {
+			return false;
+		}
+		
+		return left && right;
     }
 }
