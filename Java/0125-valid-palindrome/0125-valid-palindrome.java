@@ -1,36 +1,36 @@
 class Solution {
     public boolean isPalindrome(String s) {
-        Stack<Integer> pilhaA = new Stack();
-		Stack<Integer> pilhaB = new Stack();
-        
+		int i = 0;
+		int j = s.length() -1;
 		
-		for(char c : s.toCharArray()) {
-			if(c >= 48 && c <= 57) {
-				//num
-				pilhaA.add((int)c);
-			} else if (c >= 65 && c <= 90) {
-				//A-Z
-				pilhaA.add((int)c - 65);
-			} else if (c >= 97 && c<= 122) {
-				//a-z
-				pilhaA.add((int)c - 97);
+		while(i<j) {
+			char l = s.charAt(i);
+			if(l >= 'A' && l <= 'Z') {
+				l += 32;
 			}
-		}
-		
-		int size = pilhaA.size();
-		for(int i = 0; i< size/2; i++) {
-			pilhaB.push(pilhaA.pop());
-		}
-        
-		if(pilhaA.size() != pilhaB.size()) {
-			pilhaA.pop();
-		}
-		
-		while(!pilhaA.empty()) {
-			if(pilhaA.pop() != pilhaB.pop()) {
+			if (!(l >= '0' && l<= '9') && !(l >= 'a' && l <= 'z')) {
+				i++;
+				continue;
+			}
+			
+			
+			char r = s.charAt(j);
+			if(r >= 'A' && r <= 'Z') {
+				r += 32;
+			}
+			if (!(r >= '0' && r<= '9') && !(r >= 'a' && r <= 'z')) {
+				j--;
+				continue;
+			}
+			
+			if(r == l) {
+				i++;
+				j--;
+			} else {
 				return false;
-			}
+			}	
 		}
+		
 		
 		return true;
     }
