@@ -1,25 +1,18 @@
 class Solution {
     public String reverseWords(String s) {
-        String ans = "";
-		String word = "";
-		int aux = 0;
 		
-		for(int i = s.length()-1; i>=0; i--) {
-			if(s.charAt(i) == ' ') {
-				aux++;
-			} else {
-				word = s.charAt(i) +  word;
-				aux = 0;
+		String[] strArr  = s.split(" ");
+		String ans = "";
+		
+		for(int i = strArr.length-1; i>=0; i--) {
+			if(strArr[i].trim() == "") {
+				continue;
 			}
-			
-			if(aux == 1 || i == 0) {
-				ans = ans + " " + word;
-				word = "";
-			}
+			ans += " " + strArr[i];
 			
 		}
 		
 		
-		return ans.trim();
+		return ans.substring(1);
     }
 }
